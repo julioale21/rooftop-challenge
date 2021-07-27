@@ -1,15 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AppLayout from "./layouts/AppLayout";
 import HomeView from "./pages/HomeView";
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/">
-          <HomeView />
-        </Route>
-      </Switch>
+      <AppLayout>
+        <Switch>
+          <Route exact path="/">
+            <HomeView />
+          </Route>
+        </Switch>
+      </AppLayout>
     </Router>
   );
 }
