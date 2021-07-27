@@ -6,18 +6,19 @@
 }
 
 .nav {
+  margin-top: 1rem 0;
   margin-right: auto;
-  margin: 1rem 0;
-  max-height;: "100px" 
+  max-height: "100px";
+  padding-right: 2rem;
 }
 
 #navbarScroll {
-  justify-content: end;
+  display: flex;
+  justify-content: flex-end;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
   .nav {
     margin: 0;
-    margin-right: auto;
   }
 }

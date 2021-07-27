@@ -11,7 +11,7 @@ const Header: React.FC = () => {
       <Navbar.Collapse id="navbarScroll">
         <Nav navbarScroll className="nav">
           <LinkItem classes="fs-6" linkTo="/home" text="Home" />
-          <LinkItem classes="fs-6" linkTo="/posts/new" text="New Post" />
+          <LinkItem classes="fs-6" linkTo="/posts/new" text="Products" />
         </Nav>
       </Navbar.Collapse>
     </Navbar>
