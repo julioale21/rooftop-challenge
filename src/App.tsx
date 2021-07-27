@@ -1,10 +1,16 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomeView from "./pages/HomeView";
 
 function App() {
   return (
-    <div>
-      <h1 className="bg-success">App</h1>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <HomeView />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
