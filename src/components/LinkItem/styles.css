@@ -1,0 +1,23 @@
+.link-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.link-item {
+  color: #EEEEEE;
+  margin-left: 1rem;
+  text-decoration: none;
+  
+}
+
+.link-item:hover {
+  color: #b4b0b0
+}
+
+@media screen and (min-width: 1200px) {
+  .link-container {
+    justify-content: flex-end;
+  }
+}
