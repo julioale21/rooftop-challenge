@@ -1,10 +1,14 @@
 import React from "react";
 import { CarouselImages } from "../components";
+import banner1 from "../assets/banner_1.jpg";
+import banner2 from "../assets/banner_2.jpg";
+import banner3 from "../assets/banner_3.jpg";
 
 const HomeView = () => {
   const images = [
-    { name: "dog", url: "https://picsum.photos/id/237/1200/300" },
-    { name: "dfas", url: "https://picsum.photos/seed/picsum/1200/300" },
+    { name: "banner1", url: banner1 },
+    { name: "banner2", url: banner2 },
+    { name: "banner3", url: banner3 },
   ];
 
   return (
