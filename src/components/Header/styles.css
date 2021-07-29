@@ -1,8 +1,10 @@
 #header {
-  background-color: #334257;
+  border-bottom: 1px solid;
+  border-color: #334257;
   justify-content: space-between;
   min-height: 70px;
   z-index: 1;
+  background-color: #e8ecf3;
 }
 
 .nav {
@@ -12,13 +14,11 @@
   padding-right: 2rem;
 }
 
-#navbarScroll {
-  display: flex;
-  justify-content: flex-end;
-}
-
 @media screen and (min-width: 768px) {
   .nav {
     margin: 0;
+  }
+  #navbarScroll {
+    justify-content: flex-end;
   }
 }

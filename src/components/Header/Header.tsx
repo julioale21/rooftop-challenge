@@ -6,13 +6,13 @@ import "./styles.css";
 
 const Header: React.FC = () => {
   return (
-    <Navbar expand="lg" id="header" variant="dark">
+    <Navbar expand="md" id="header" variant="light">
       <Image className="ms-5" src={logo} width="100px" />
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav navbarScroll className="nav">
-          <LinkItem classes="fs-6" linkTo="/home" text="Home" />
-          <LinkItem classes="fs-6" linkTo="/posts/new" text="Products" />
+          <LinkItem classes="fs-5 text-dark fw-bold" linkTo="/" text="Home" />
+          <LinkItem classes="fs-5 text-dark fw-bold" linkTo="/products" text="Products" />
         </Nav>
       </Navbar.Collapse>
     </Navbar>
