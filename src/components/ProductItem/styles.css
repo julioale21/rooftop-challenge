@@ -1,0 +1,52 @@
+.proudct-card {
+  margin-bottom: 1rem;
+}
+
+.proudct-card:hover > .top-item {
+  opacity: 1;
+}
+
+.proudct-card:hover > .bottom-item {
+  opacity: 1;
+}
+
+.product-card-price {
+  text-align: end;
+  margin-right: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: gray;
+}
+
+.product-card-title {
+  font-weight: bolder;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.bottom-item {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  opacity: 0;
+  transition: 1s;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bottom-item button {
+  background: transparent;
+  border: none;
+}
+
+.top-item {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  opacity: 0;
+  transition: 1s;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.top-item h3{
+  text-align: center;
+}
