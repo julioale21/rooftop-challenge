@@ -14,7 +14,7 @@ const CarouselImages: React.FC<Props> = ({ images }) => {
     <Carousel>
       {images.map((image, index) => (
         <Carousel.Item key={index}>
-          <Image alt={image.name} className="d-block w-100" src={image.url} />
+          <Image alt={image.name} className="d-block w-100" height={400} src={image.url} />
         </Carousel.Item>
       ))}
     </Carousel>
