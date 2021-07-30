@@ -1,5 +1,18 @@
 .proudct-card {
   margin-bottom: 1rem;
+  height: 100%;
+  box-shadow: 1px 1px 1px rgb(165, 165, 165);
+}
+
+.product-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.product-card-container {
+  padding: 1rem 0;
 }
 
 .proudct-card:hover > .top-item {
@@ -27,7 +40,8 @@
 .bottom-item {
   position: absolute;
   width: 100%;
-  bottom: 0;
+  height: 50px;
+  top: 0;
   opacity: 0;
   transition: 1s;
   background-color: rgba(0, 0, 0, 0.5);
@@ -38,15 +52,7 @@
   border: none;
 }
 
-.top-item {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  opacity: 0;
-  transition: 1s;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.top-item h3{
-  text-align: center;
+.offer {
+  text-decoration: line-through;
+  font-size: 1rem;
 }
