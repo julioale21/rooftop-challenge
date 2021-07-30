@@ -5,7 +5,7 @@ import "./styles.css";
 
 const ProductItemSkeleton = () => {
   return (
-    <Col className="skeleton-container" lg={3} md={4} xs={11}>
+    <Col className="skeleton-container" lg={4} md={6} xl={3} xs={11}>
       <Card className="skeleton-card">
         <SkeletonElement type="image" />
         <div className="skeleton-body">
