@@ -1,6 +1,6 @@
 .discount-card {
   border: 1px solid orange;
-  width: 80px;
+  width: 70px;
   padding: 2px;
   display: flex;
   border-radius: 20px;
@@ -10,6 +10,7 @@
 
 .discount-card p {
   color: orange;
+  font-size: 0.7rem;
 }
 
 .discount-container {
@@ -17,7 +18,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  padding: 0 1rem;
+  padding: 0 .5rem;
 }
 
 .discount-price {
