@@ -4,3 +4,9 @@ export function parseCurrency(value: number): string {
     currency: "ARS",
   });
 }
+
+export function getDiscount(normalPrice: number, currentPrice: number): number {
+  const discount: number = 100 - (currentPrice * 100) / normalPrice;
+
+  return Math.trunc(discount);
+}
