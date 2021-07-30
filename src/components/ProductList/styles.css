@@ -1,5 +1,10 @@
 .product-list {
   padding: 0 2rem;
   margin-bottom: 2rem;
-  max-width: 100%;
+  max-width: 90%;
+}
+
+.product-list-container {
+  display: flex;
+  justify-content: center;
 }

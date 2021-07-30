@@ -1,6 +1,5 @@
 import React from "react";
-import { Row } from "react-bootstrap";
-import { shuffle } from "underscore";
+import { Row, Container } from "react-bootstrap";
 import { ProductItem } from "../../components";
 import Product from "../../models/Product";
 import "./styles.css";
@@ -10,11 +9,13 @@ interface Props {
 }
 const ProductList: React.FC<Props> = ({ products }) => {
   return (
-    <Row className="product-list">
-      {shuffle(products).map((product) => (
-        <ProductItem key={product.id} product={product} />
-      ))}
-    </Row>
+    <Container className="product-list-container">
+      <Row className="product-list">
+        {products.map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+      </Row>
+    </Container>
   );
 };
 
