@@ -1,5 +1,5 @@
 import React from "react";
-import { Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import ProductItemSkeleton from "../ProductItemSkeleton/ProductItemSkeleton";
 import "./styles.css";
 
@@ -8,11 +8,13 @@ interface Props {
 }
 const ProductListSkeleton: React.FC<Props> = ({ quantity }) => {
   return (
-    <Row className="skeleton-list">
-      {[...Array(quantity)].map((e, i) => (
-        <ProductItemSkeleton key={i} />
-      ))}
-    </Row>
+    <Container className="skeleton-list-container">
+      <Row className="skeleton-list">
+        {[...Array(quantity)].map((e, i) => (
+          <ProductItemSkeleton key={i} />
+        ))}
+      </Row>
+    </Container>
   );
 };
 
