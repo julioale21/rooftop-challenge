@@ -1,0 +1,18 @@
+.form-control{
+  border-radius: 10px;
+  padding: 0.8rem 2rem;
+  font-weight: 200;
+  font-size: 1rem;
+  border: 1px solid #3797A4;
+  font-weight: 600;
+}
+
+.form-control:focus {
+  border: 2px solid #3797A4;
+  box-shadow: none;
+}
+
+.form-control::placeholder {
+  color: #3797A4;
+  font-weight: 200;
+}
