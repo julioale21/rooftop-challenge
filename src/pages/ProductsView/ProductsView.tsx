@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/actions/productsActions";
 import IState from "../../interfaces/IEstate";
 import Product from "../../models/Product";
-import { Pagination, ProductList, ProductListItemSkeleton } from "../../components";
+import { Pagination, ProductList, ProductListItemSkeleton, SearchForm } from "../../components";
 import usePagination from "../../components/Pagination/usePagination";
 
 const ProductsView: React.FC = () => {
@@ -25,7 +25,9 @@ const ProductsView: React.FC = () => {
 
   return (
     <Container fluid className="mt-5">
-      <input type="search" onChange={handleChange} />
+      <Container className="pe-5">
+        <SearchForm onInputChange={handleChange} />
+      </Container>
       {!isLoading ? (
         <>
           <ProductList products={paginatedProducts} />
