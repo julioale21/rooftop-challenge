@@ -1,13 +1,6 @@
 .skeleton-card {
-  min-height: 327px;
+  height: 275px;
   height: 100%;
-}
-
-.skeleton-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
 }
 
 .skeleton-container{

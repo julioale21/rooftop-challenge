@@ -8,15 +8,8 @@ const ProductItemSkeleton = () => {
     <Col className="skeleton-container" lg={4} md={6} xl={3} xs={11}>
       <Card className="skeleton-card">
         <SkeletonElement type="image" />
-        <div className="skeleton-body">
-          <div className="d-flex justify-content-center">
-            <SkeletonElement type="title" />
-          </div>
-          <div className="d-flex justify-content-end">
-            <div className="w-25 me-2">
-              <SkeletonElement type="text" />
-            </div>
-          </div>
+        <div className="d-flex justify-content-start ps-2">
+          <SkeletonElement type="title" />
         </div>
         <div className="d-flex justify-content-end pe-2 pb-3">
           <SkeletonElement type="button" />
