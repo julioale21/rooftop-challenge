@@ -1,5 +1,4 @@
 .product-list {
-  padding: 0 2rem;
   margin-bottom: 2rem;
   max-width: 90%;
 }
@@ -7,4 +6,13 @@
 .product-list-container {
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
+}
+
+
+@media screen and (min-width: 768px) {
+  .product-list {
+    padding: 0 2rem;
+
+  }  
 }
