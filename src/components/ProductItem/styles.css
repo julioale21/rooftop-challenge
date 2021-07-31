@@ -1,4 +1,11 @@
 
+.normal-price-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -7,10 +14,11 @@
   background-color: white;
   border: 0.2px solid lightgrey;
   box-shadow: 1px 1px 1px lightgrey;
+  min-width: 230px;
 }
 
 .product-card:hover {
-  transform: translateY("5px");
+  transform: translateY(-10px);
   cursor: pointer;
 }
 
@@ -23,6 +31,24 @@
 
 .product-card-image {
   border-radius: 10px 10px 0 0;
+}
+
+.product-card-title {
+  text-align: start;
+  margin: 0;
+  margin-bottom: 0.7rem;
+  font-weight: bolder;
+}
+
+.product-container {
+  position: relative;
+  margin-bottom: 3.5rem;
+}
+
+.product-price-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .offer {
@@ -40,6 +66,7 @@
   font-size: 1.5rem;
   color: #488B8F;
   font-weight: bolder;
+  margin: 0;
 }
 
 .offer-text {
