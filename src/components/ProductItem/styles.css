@@ -41,3 +41,9 @@
   color: #488B8F;
   font-weight: bolder;
 }
+
+.offer-text {
+  font-size: 0.7rem;
+  font-weight: lighter;
+  margin-right: 0.5rem;
+}
