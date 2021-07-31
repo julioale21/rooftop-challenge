@@ -1,5 +1,8 @@
+import Product from "../models/Product";
+
 export default interface IState {
-  products: [];
-  selectedProduct: object;
+  products: Product[];
+  selectedProduct: Product;
   questions: [];
+  isLoading: boolean;
 }
