@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/actions/productsActions";
 import IState from "../../interfaces/IEstate";
 import Product from "../../models/Product";
-import { ProductList, ProductListItemSkeleton } from "../../components";
+import { Pagination, ProductList, ProductListItemSkeleton } from "../../components";
 
 const ProductsView: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,10 @@ const ProductsView: React.FC = () => {
       <h2 className="text-center fw-bold fs-1 mt-5">Products List</h2>
 
       {products.length ? (
-        <ProductList products={products} />
+        <>
+          <ProductList products={products} />
+          <Pagination handleNext={() => {}} handlePrev={() => {}} page={1} pageCount={3} />
+        </>
       ) : (
         <ProductListItemSkeleton quantity={10} />
       )}
