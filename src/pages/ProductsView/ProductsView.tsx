@@ -5,24 +5,36 @@ import { fetchProducts } from "../../redux/actions/productsActions";
 import IState from "../../interfaces/IEstate";
 import Product from "../../models/Product";
 import { Pagination, ProductList, ProductListItemSkeleton } from "../../components";
+import usePagination from "../../components/Pagination/usePagination";
 
 const ProductsView: React.FC = () => {
   const dispatch = useDispatch();
+  const products: Product[] = useSelector((state: IState) => state.products);
+  const isLoading: boolean = useSelector((state: IState) => state.isLoading);
+
+  const { paginatedProducts, currentPage, pageCount, filterValues, setNextPage, setPrevPage } =
+    usePagination(products);
 
   React.useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const products: Product[] = useSelector((state: IState) => state.products);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    filterValues(e.target.value);
+  };
 
   return (
-    <Container fluid>
-      <h2 className="text-center fw-bold fs-1 mt-5">Products List</h2>
-
-      {products.length ? (
+    <Container fluid className="mt-5">
+      <input type="search" onChange={handleChange} />
+      {!isLoading ? (
         <>
-          <ProductList products={products} />
-          <Pagination handleNext={() => {}} handlePrev={() => {}} page={1} pageCount={3} />
+          <ProductList products={paginatedProducts} />
+          <Pagination
+            handleNext={setNextPage}
+            handlePrev={setPrevPage}
+            page={currentPage}
+            pageCount={pageCount}
+          />
         </>
       ) : (
         <ProductListItemSkeleton quantity={10} />
