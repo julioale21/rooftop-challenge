@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Image } from "react-bootstrap";
 import Product from "../../models/Product";
 import { getDiscount, parseCurrency } from "../../utils/currency";
-import { isCurrent } from "../../utils/days";
+import { hasExpired } from "../../utils/days";
 import Discount from "../Discount";
 import "./styles.css";
 
@@ -10,29 +10,37 @@ interface Props {
   product: Product;
 }
 const ProductItemTest: React.FC<Props> = ({ product }) => {
+  let isCurrentOffer = false;
   const today = new Date();
-  const hasOffer: Boolean = product.offer !== null;
-  const title = product.title.length > 24 ? product.title.substring(0, 20) + "..." : product.title;
+  const title = product.title.length > 20 ? product.title.substring(0, 20) + "..." : product.title;
+
+  if (product.offer !== null && !hasExpired(today.toString(), product.offer.expires_at)) {
+    isCurrentOffer = true;
+  }
 
   return (
-    <Col className="mb-5 position-relative" lg={4} md={6} xl={3} xs={12}>
+    <Col className="product-container" lg={4} md={6} xl={3} xs={12}>
       <div className="product-card">
         <Image className="product-card-image" src={product.images[0]} width="100%" />
         <div className="product-card-body">
-          <p className="text-start m-0 mb-2 fw-bolder">{title}</p>
-          <div className="d-flex flex-column align-items-end">
-            {hasOffer && isCurrent(today.toString(), product.offer.expires_at) ? (
-              <>
-                <p className="offer-price m-0">{parseCurrency(Number(product.offer.price))}</p>
-                <Discount off={getDiscount(Number(product.price), Number(product.offer.price))} />
-              </>
-            ) : null}
-            <div className="d-flex h-100 align-items-end">
-              {hasOffer && <p className="offer-text my-0">Antes </p>}
-              <p className={`m-0 ${hasOffer ? "offer" : "price"}`}>
+          <p className="product-card-title">{title}</p>
+          <div className="product-price-container">
+            <div
+              className={`normal-price-container ${
+                isCurrentOffer ? "justify-content-start" : "justify-content-end"
+              }`}
+            >
+              {isCurrentOffer && <p className="offer-text my-0">Antes </p>}
+              <p className={`m-0 ${isCurrentOffer ? "offer" : "price"}`}>
                 {parseCurrency(Number(product.price))}
               </p>
             </div>
+            {isCurrentOffer && (
+              <Discount off={getDiscount(Number(product.price), product.offer.price)} />
+            )}
+            {isCurrentOffer ? (
+              <p className="offer-price">{parseCurrency(product.offer.price)}</p>
+            ) : null}
           </div>
         </div>
       </div>
