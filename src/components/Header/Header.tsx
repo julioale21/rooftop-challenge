@@ -11,12 +11,8 @@ const Header: React.FC = () => {
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav navbarScroll className="nav">
-          <LinkItem classes="fs-5 text-light fw-bold text-uppercase" linkTo="/" text="Home" />
-          <LinkItem
-            classes="fs-5 text-light fw-bold text-uppercase"
-            linkTo="/products"
-            text="Products"
-          />
+          <LinkItem classes="fs-6  fw-bold text-uppercase" linkTo="/" text="Home" />
+          <LinkItem classes="fs-6 fw-bold text-uppercase" linkTo="/products" text="Products" />
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -1,4 +1,4 @@
-.form-control{
+.search-input{
   border-radius: 10px;
   padding: 0.8rem 2rem;
   font-weight: 200;
@@ -7,12 +7,13 @@
   font-weight: 600;
 }
 
-.form-control:focus {
+.search-input:focus {
   border: 2px solid #3797A4;
   box-shadow: none;
+  outline: none;
 }
 
-.form-control::placeholder {
+.search-input::placeholder {
   color: #3797A4;
   font-weight: 200;
 }

@@ -10,7 +10,12 @@ const SearchForm: React.FC<Props> = ({ onInputChange }) => {
     <Row className="d-flex justify-content-end mb-5">
       <Col className="my-1" sm={3}>
         <InputGroup>
-          <FormControl placeholder="Search here" type="search" onChange={onInputChange} />
+          <input
+            className="search-input"
+            placeholder="Search here"
+            type="search"
+            onChange={onInputChange}
+          />
         </InputGroup>
       </Col>
     </Row>

@@ -9,11 +9,10 @@
   color: #EEEEEE;
   margin-left: 1rem;
   text-decoration: none;
-  
 }
 
 .link-item:hover {
-  color: #b4b0b0
+  color: rgb(212, 209, 209);
 }
 
 @media screen and (min-width: 1200px) {
