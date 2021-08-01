@@ -21,12 +21,7 @@ const ProductDetail: React.FC = () => {
       <div className="d-flex pt-5">
         <div className="d-flex justify-content-center w-75">
           <div className="w-50 h-25">
-            <ImageGallery
-              items={images}
-              showFullscreenButton={false}
-              showNav={false}
-              showPlayButton={false}
-            />
+            <ImageGallery items={images} showNav={false} showPlayButton={false} />
           </div>
         </div>
         <div className="w-25">
