@@ -140,9 +140,9 @@ The files are structured as follow:
     └── README.md            # The first page that the user will view when will visit the repository.
     
 Components folder is structured as follows:
-- Ech component has a folder with the same name.
-- Ech component has a index.ts which exports it by default.
-- Ech component can have a style.css if necessary.
+- Each component has a folder with the same name. 
+- Each component has a index.ts which exports it by default.
+- Each component can have a style.css if necessary.
 - Te component folder could contain any resource associated with the component such as its tests
 - Components folder contain a global index.ts that exports each component by default
     - This allows to export components as in the following example 
