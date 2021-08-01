@@ -23,6 +23,10 @@ const ProductsView: React.FC = () => {
     filterValues(e.target.value);
   };
 
+  const handleSelectedProduct = (product: Product) => {
+    console.log(product);
+  };
+
   return (
     <Container fluid className="mt-5">
       <Container className="pe-5">
@@ -30,7 +34,10 @@ const ProductsView: React.FC = () => {
       </Container>
       {!isLoading ? (
         <>
-          <ProductList products={paginatedProducts} />
+          <ProductList
+            products={paginatedProducts}
+            onProductSelected={(product) => handleSelectedProduct(product)}
+          />
           <Pagination
             handleNext={setNextPage}
             handlePrev={setPrevPage}

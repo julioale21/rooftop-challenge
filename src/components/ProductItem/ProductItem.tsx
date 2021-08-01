@@ -8,8 +8,9 @@ import "./styles.css";
 
 interface Props {
   product: Product;
+  onProductSelected: (product: Product) => void;
 }
-const ProductItemTest: React.FC<Props> = ({ product }) => {
+const ProductItem: React.FC<Props> = ({ product, onProductSelected }) => {
   let isCurrentOffer = false;
   const today = new Date();
   const title = product.title.length > 20 ? product.title.substring(0, 20) + "..." : product.title;
@@ -20,7 +21,7 @@ const ProductItemTest: React.FC<Props> = ({ product }) => {
 
   return (
     <Col className="product-container" lg={4} md={6} xl={3} xs={12}>
-      <div className="product-card">
+      <div className="product-card" onClick={() => onProductSelected(product)}>
         <Image className="product-card-image" src={product.images[0]} width="100%" />
         <div className="product-card-body">
           <p className="product-card-title">{title}</p>
@@ -48,4 +49,4 @@ const ProductItemTest: React.FC<Props> = ({ product }) => {
   );
 };
 
-export default ProductItemTest;
+export default ProductItem;
