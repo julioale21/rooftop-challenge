@@ -62,7 +62,37 @@ Below we detail what should go on each page, appearing in the order in which it 
     - To make it random we recommend using this library https://underscorejs.org/ #shuffle method.
     
  ### Catalogue
- 
+ - Product list.
+ - For each product a photo, a title and the price will be shown.
+ - If the product is on sale, only the sale price should be shown in green.
+ - Each list item must be clickable to go to the detail page
+
+### Detail
+- On the detail page you can see all the product information.
+- Product photos must be displayed in gallery form
+    - You can use this library https://www.npmjs.com/package/react-image-gallery.
+    - It is necessary that the arrows always appear on both sides.
+    - And that can be seen in full screen mode.
+- There should be a form to leave inquiries about the product.
+    - Only one large text field is required for the query message.
+        - Validate that the message contains between 10 and 500 characters.
+    - And a text field for the email
+        - Validate that the text is a valid email.
+    - Button to send the request.
+    - To validate you can use https://www.npmjs.com/package/react-hook-form.
+- Products that are on sale have a sale end date.
+    - You have to show something that says "this offer ends in XX days XX hours".
+    - To calculate the difference between dates you can use https://day.js.org/.
+
+
+###  👉 To All Site
+
+- A top menu that fills 100% of the width, containing the logo on the left.
+- A footer with the copyright that says the current year using programming.
+- We must use a special font throughout the site called "Mulish".
+- The default color for all font on the site is # 252525.
+- The background must be white.
+- Container boxes can have a 1px, solid, light gray border.
 
 
 
@@ -77,6 +107,11 @@ Below we detail what should go on each page, appearing in the order in which it 
 - Vite.js
 - Bootstrap
 - React-Bootstrap
+- React Router
+- React Redux
+- React Image Gallery
+- Dayjs
+- Undescore
 - Formik
 - Yup
 - Axios
@@ -85,28 +120,64 @@ Below we detail what should go on each page, appearing in the order in which it 
 ### Project Structure
 The files are structured as follow:
 
-    .
-    ├── public              # Static Files
     ├── src
         ├── assets          # App resources like images
         ├── components      # Stateless components
-        ├── Context         # Global state  
-        ├── models          # Entities
-        ├── screens         # Pages that make up the app 
-        ├── services        # Set of software functionalities that different clients can reuse for different purposes
-        ├── types           # custom types
-        App.css
+        ├── interfaces     
+        ├── layouts         # At this moment it contain only App Layout but there could be more in the future
+        ├── models          # Entities used in the App.
+        ├── pages           # Pages that make up the app 
+        ├── redux           # Management of the global state of the application.
+             ├── actions
+             ├── reducers
+             productService.ts
+             store
+        ├── utils           # Functions that are defined in one place and can be consumed by the entire application.
         App.tsx
+        index.css           # Global styles
         main.tsx
     ├── CONTRIBUTING.md      # Document the conventions used in this project.
     └── README.md            # The first page that the user will view when will visit the repository.
+    
+Components folder is structured as follows:
+- Ech component has a folder with the same name.
+- Ech component has a index.ts which exports it by default.
+- Ech component can have a style.css if necessary.
+- Te component folder could contain any resource associated with the component such as its tests
+- Components folder contain a global index.ts that exports each component by default
+    - This allows to export components as in the following example 
+    
+            import { Component1, Component2, ...) from "src/components"
+
+### Commits convention
+
+To commit the changes, the conventional commits convention was followed. That is:
+
+commit format:
+
+    <type>[optional scope]: <description>
+    
+Conventional commit names
+
+    feat: (new feature for the user, not a new feature for build script)
+    
+    fix: (bug fix for the user, not a fix to a build script)
+    
+    docs: (changes to the documentation)
+    
+    style: (formatting, missing semi colons, etc; no production code change)
+    
+    refactor: (refactoring production code, eg. renaming a variable)
+    
+    test: (adding missing tests, refactoring tests; no production code change)
+    
+    chore: (updating grunt tasks etc)
 
 ## Requirements
 * npm or yarn
 * Git
 
 ## Local deployment
-
 * Clone repository.
 * Execute the command `npm install`
 * Execute the command `npm run dev`
