@@ -182,4 +182,16 @@ Conventional commit names
 * Execute the command `npm install`
 * Execute the command `npm run dev`
 
+
+## Documentation
+
+-  Conventional commit  https://www.conventionalcommits.org/en/v1.0.0/
+-  How to Write a Git Commit Message https://chris.beams.io/posts/git-commit/
+-  React Skeleton Tutorial https://www.youtube.com/watch?v=cg_tmJBisp8
+-  Eslint Documentation https://eslint.org/docs/user-guide/getting-started.
+-  Prettier Documentation https://github.com/prettier/eslint-plugin-prettier.
+-  Vitejs Documentation https://vitejs.dev/
+-  React Bootstrap https://react-bootstrap.github.io/
+-  Bootstrap https://getbootstrap.com/
+-  REact Image Gallery https://www.npmjs.com/package/react-image-gallery
   
