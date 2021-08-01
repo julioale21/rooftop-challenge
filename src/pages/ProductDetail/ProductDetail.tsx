@@ -1,24 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
+//import { images } from "../../utils/carouselImages";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
+import IState from "../../interfaces/IEstate";
 
 const ProductDetail: React.FC = () => {
-  const images = [
-    {
-      original: "https://picsum.photos/id/1018/600/300/",
-      thumbnail: "https://picsum.photos/id/1018/250/150/",
-    },
-    {
-      original: "https://picsum.photos/id/1015/600/300/",
-      thumbnail: "https://picsum.photos/id/1015/250/150/",
-    },
-    {
-      original: "https://picsum.photos/id/1019/600/300/",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
-    },
-  ];
+  const product = useSelector((state: IState) => state.selectedProduct);
+  const images = product.images.map((image) => {
+    return {
+      original: image,
+      thumbnail: image,
+    };
+  });
 
   return (
     <Container fluid className="detail-container pt-5">
