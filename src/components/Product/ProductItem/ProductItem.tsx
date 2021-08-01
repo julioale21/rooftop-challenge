@@ -1,9 +1,9 @@
 import React from "react";
 import { Col, Image } from "react-bootstrap";
-import Product from "../../models/Product";
-import { getDiscount, parseCurrency } from "../../utils/currency";
-import { hasExpired } from "../../utils/days";
-import Discount from "../Discount";
+import Product from "../../../models/Product";
+import { getDiscount, parseCurrency } from "../../../utils/currency";
+import { hasExpired } from "../../../utils/days";
+import Discount from "../../Discount";
 import "./styles.css";
 
 interface Props {

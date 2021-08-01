@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Container } from "react-bootstrap";
 import ProductItem from "../ProductItem";
-import Product from "../../models/Product";
+import Product from "../../../models/Product";
 import "./styles.css";
 
 interface Props {

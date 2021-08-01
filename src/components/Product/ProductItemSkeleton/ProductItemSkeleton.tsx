@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
-import SkeletonElement from "../skeletons/SkeletonElement";
+import SkeletonElement from "../../BaseSkeletons/SkeletonElement";
 import "./styles.css";
 
 const ProductItemSkeleton = () => {
