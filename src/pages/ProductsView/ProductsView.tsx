@@ -1,14 +1,16 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../redux/actions/productsActions";
+import { useHistory } from "react-router";
+import { Pagination, ProductList, ProductListItemSkeleton, SearchForm } from "../../components";
+import { fetchProducts, setSelectedProduct } from "../../redux/actions/productsActions";
+import { Container } from "react-bootstrap";
+import usePagination from "../../components/Pagination/usePagination";
 import IState from "../../interfaces/IEstate";
 import Product from "../../models/Product";
-import { Pagination, ProductList, ProductListItemSkeleton, SearchForm } from "../../components";
-import usePagination from "../../components/Pagination/usePagination";
 
 const ProductsView: React.FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const products: Product[] = useSelector((state: IState) => state.products);
   const isLoading: boolean = useSelector((state: IState) => state.isLoading);
 
@@ -24,7 +26,8 @@ const ProductsView: React.FC = () => {
   };
 
   const handleSelectedProduct = (product: Product) => {
-    console.log(product);
+    dispatch(setSelectedProduct(product));
+    history.push(`/products/${product.id}`);
   };
 
   return (
