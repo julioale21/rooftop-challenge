@@ -1,6 +1,7 @@
-import { FETCH_PRODUCTS, SET_ISLOADING } from "./actionsTypes";
+import { FETCH_PRODUCTS, SET_ISLOADING, SET_SELECTED_PRODUCT } from "./actionsTypes";
 import { Dispatch } from "redux";
 import ProductsService from "../ProductsService";
+import Product from "../../models/Product";
 
 const setIsLoading = (isLoading: boolean, dispatch: Dispatch) => {
   dispatch({
@@ -19,5 +20,12 @@ export const fetchProducts = (limit?: number) => async (dispatch: Dispatch) => {
       type: FETCH_PRODUCTS,
       payload: { products },
     });
+  });
+};
+
+export const setSelectedProduct = (selectedProduct?: Product) => async (dispatch: Dispatch) => {
+  dispatch({
+    type: SET_SELECTED_PRODUCT,
+    payload: { selectedProduct },
   });
 };
