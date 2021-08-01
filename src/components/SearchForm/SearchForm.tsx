@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, FormControl, InputGroup, Row } from "react-bootstrap";
+import { Col, InputGroup, Row } from "react-bootstrap";
 import "./styles.css";
 
 interface Props {
