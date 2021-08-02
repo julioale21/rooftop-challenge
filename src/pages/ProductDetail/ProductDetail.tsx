@@ -48,6 +48,11 @@ const ProductDetail: React.FC = () => {
       <Row className="mt-5">
         <Col>
           <h1>form queries</h1>
+          {questions.map((question) => (
+            <>
+              <h3>{question.customer_name}</h3>
+            </>
+          ))}
         </Col>
       </Row>
     </Container>

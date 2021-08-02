@@ -1,5 +1,6 @@
 import axios from "axios";
 import Product from "../models/Product";
+import Question from "../models/Question";
 
 const baseURL = "https://rooftop-api-rest-frontend.herokuapp.com/";
 
@@ -14,7 +15,9 @@ class ProductsService {
   static async fetchQuestions(product_id: number) {
     const response = await axios.get(`${baseURL}questions?item_id=${product_id}`);
 
-    console.log(response);
+    const questions: Question[] = response.data;
+
+    return questions;
   }
 }
 
