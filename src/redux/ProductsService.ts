@@ -10,6 +10,12 @@ class ProductsService {
 
     return products;
   }
+
+  static async fetchQuestions(product_id: number) {
+    const response = await axios.get(`${baseURL}questions?item_id=${product_id}`);
+
+    console.log(response);
+  }
 }
 
 export default ProductsService;
