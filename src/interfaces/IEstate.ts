@@ -1,8 +1,9 @@
 import Product from "../models/Product";
+import Question from "../models/Question";
 
 export default interface IState {
   products: Product[];
   selectedProduct: Product;
-  questions: [];
+  questions: Question[];
   isLoading: boolean;
 }
