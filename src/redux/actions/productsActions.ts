@@ -1,4 +1,9 @@
-import { FETCH_PRODUCTS, SET_ISLOADING, SET_SELECTED_PRODUCT } from "./actionsTypes";
+import {
+  FETCH_PRODUCTS,
+  FETCH_QUESTIONS,
+  SET_ISLOADING,
+  SET_SELECTED_PRODUCT,
+} from "./actionsTypes";
 import { Dispatch } from "redux";
 import ProductsService from "../ProductsService";
 import Product from "../../models/Product";
@@ -28,4 +33,17 @@ export const setSelectedProduct = (selectedProduct?: Product) => async (dispatch
     type: SET_SELECTED_PRODUCT,
     payload: { selectedProduct },
   });
+};
+
+export const fetchQuestions = (product_id: number) => async (dispatch: Dispatch) => {
+  ProductsService.fetchQuestions(product_id)
+    .then((questions) => {
+      dispatch({
+        type: FETCH_QUESTIONS,
+        payload: { questions },
+      });
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
 };
