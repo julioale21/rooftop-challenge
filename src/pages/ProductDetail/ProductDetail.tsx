@@ -1,13 +1,29 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Container } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { Container, Col, Row } from "react-bootstrap";
+import { fetchQuestions } from "../../redux/actions/productsActions";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
 import IState from "../../interfaces/IEstate";
 
 const ProductDetail: React.FC = () => {
+  const dispatch = useDispatch();
   const product = useSelector((state: IState) => state.selectedProduct);
+  const questions = useSelector((state: IState) => state.questions);
+
+  React.useEffect(() => {
+    dispatch(fetchQuestions(product.id));
+  }, [dispatch, product]);
+
+  if (!Object.keys(product).length) {
+    return (
+      <div className="detail-container d-flex align-items-center justify-content-center">
+        <h3>No product selected</h3>
+      </div>
+    );
+  }
+
   const images = product.images.map((image) => {
     return {
       original: image,
@@ -17,21 +33,23 @@ const ProductDetail: React.FC = () => {
 
   return (
     <Container fluid className="detail-container pt-5">
-      <h1 className="text-start ms-5">Nombre del producto</h1>
-      <div className="d-flex pt-5">
-        <div className="d-flex justify-content-center w-75">
-          <div className="w-50 h-25">
-            <ImageGallery items={images} showNav={false} showPlayButton={false} />
-          </div>
-        </div>
-        <div className="w-25">
+      <h1 className="text-start ms-5">{product.title}</h1>
+      <Row>
+        <Col md={6} xs={12}>
+          <ImageGallery items={images} showNav={false} showPlayButton={false} />
+        </Col>
+        <Col md={6} xs={12}>
           <div className="d-flex justify-content-around align-items-center">
             <h1 className="fs-4 text-decoration-line-through">$432</h1>
           </div>
-
           <h5>otra cosa</h5>
-        </div>
-      </div>
+        </Col>
+      </Row>
+      <Row className="mt-5">
+        <Col>
+          <h1>form queries</h1>
+        </Col>
+      </Row>
     </Container>
   );
 };
