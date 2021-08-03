@@ -1,12 +1,14 @@
 import {
   FETCH_PRODUCTS,
   FETCH_QUESTIONS,
+  SEND_QUESTION,
   SET_ISLOADING,
   SET_SELECTED_PRODUCT,
 } from "./actionsTypes";
 import { Dispatch } from "redux";
 import ProductsService from "../ProductsService";
 import Product from "../../models/Product";
+import Question from "../../models/Question";
 
 const setIsLoading = (isLoading: boolean, dispatch: Dispatch) => {
   dispatch({
@@ -46,4 +48,22 @@ export const fetchQuestions = (product_id: number) => async (dispatch: Dispatch)
     .catch((error) => {
       throw new Error(error);
     });
+};
+
+export const sendQuestion = (question: Question) => async (dispatch: Dispatch) => {
+  try {
+    const status = await ProductsService.sendQuestion(question);
+
+    if (status === 201) {
+      dispatch({
+        type: SEND_QUESTION,
+      });
+
+      return Promise.resolve(status);
+    } else {
+      return Promise.reject(null);
+    }
+  } catch (error) {
+    return Promise.reject(error);
+  }
 };
