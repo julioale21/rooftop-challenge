@@ -3,14 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import { fetchQuestions, sendQuestion } from "../../redux/actions/productsActions";
 import { QuestionList, QuestionForm } from "../../components";
+import { useToasts } from "react-toast-notifications";
 import ImageGallery from "react-image-gallery";
 import IState from "../../interfaces/IEstate";
+import Question from "../../models/Question";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
-import Question from "../../models/Question";
 
 const ProductDetail: React.FC = () => {
   const dispatch = useDispatch();
+  const { addToast } = useToasts();
   const product = useSelector((state: IState) => state.selectedProduct);
   const questions = useSelector((state: IState) => state.questions);
 
@@ -40,10 +42,12 @@ const ProductDetail: React.FC = () => {
   });
 
   const handleSendQuestion = async (question: Question) => {
-    const status = await dispatch(sendQuestion(question));
-
-    // eslint-disable-next-line no-console
-    console.log(status);
+    try {
+      await dispatch(sendQuestion(question));
+      addToast("Message successfully sent", { appearance: "success" });
+    } catch (error) {
+      addToast("Something was wrong", { appearance: "error" });
+    }
   };
 
   return (
