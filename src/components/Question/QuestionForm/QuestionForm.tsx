@@ -16,7 +16,7 @@ const QuestionForm: React.FC<Props> = ({ onQuestionSent }) => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: schema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       const question: Question = {
         customer_name: "julioale21",
         question: values.message,
@@ -24,6 +24,7 @@ const QuestionForm: React.FC<Props> = ({ onQuestionSent }) => {
       };
 
       onQuestionSent(question);
+      resetForm();
     },
   });
 
