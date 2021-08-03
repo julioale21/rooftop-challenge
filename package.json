@@ -11,9 +11,11 @@
     "@types/react-redux": "^7.1.18",
     "@types/react-router-dom": "^5.1.8",
     "@types/underscore": "^1.11.3",
+    "@types/yup": "^0.29.13",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
     "dayjs": "^1.10.6",
+    "formik": "^2.2.9",
     "react": "^17.0.0",
     "react-bootstrap": "^2.0.0-beta.4",
     "react-dom": "^17.0.0",
@@ -21,7 +23,8 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux-thunk": "^2.3.0",
-    "underscore": "^1.13.1"
+    "underscore": "^1.13.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
