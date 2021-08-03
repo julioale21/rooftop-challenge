@@ -50,20 +50,22 @@ export const fetchQuestions = (product_id: number) => async (dispatch: Dispatch)
     });
 };
 
-export const sendQuestion = (question: Question) => async (dispatch: Dispatch) => {
-  try {
-    const status = await ProductsService.sendQuestion(question);
+export const sendQuestion =
+  (question: Question) =>
+  async (dispatch: Dispatch): Promise<number> => {
+    try {
+      const status = await ProductsService.sendQuestion(question);
 
-    if (status === 201) {
-      dispatch({
-        type: SEND_QUESTION,
-      });
+      if (status === 201) {
+        dispatch({
+          type: SEND_QUESTION,
+        });
 
-      return Promise.resolve(status);
-    } else {
-      return Promise.reject(null);
+        return Promise.resolve(status);
+      } else {
+        throw new Error("Error");
+      }
+    } catch (error) {
+      throw new Error(error);
     }
-  } catch (error) {
-    return Promise.reject(error);
-  }
-};
+  };
