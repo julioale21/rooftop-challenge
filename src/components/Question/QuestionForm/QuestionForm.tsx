@@ -22,19 +22,6 @@ const QuestionForm = () => {
         <form onSubmit={formik.handleSubmit}>
           <FormGroup className="mt-4">
             <FormControl
-              name="username"
-              placeholder="Enter username"
-              type="text"
-              value={formik.values.username}
-              onChange={formik.handleChange}
-            />
-            {formik.touched.username && formik.errors.username ? (
-              <FormError errorText={formik.errors.username} />
-            ) : null}
-          </FormGroup>
-
-          <FormGroup className="mt-4">
-            <FormControl
               as="textarea"
               name="message"
               placeholder="Enter your message"
