@@ -7,6 +7,7 @@ export { default as LinkItem } from "./LinkItem";
 export { default as Pagination } from "./Pagination";
 export { default as ProductItem } from "./Product/ProductItem";
 export { default as ProductList } from "./Product/ProductList";
+export { default as ProductItemSkeleton } from "./Product/ProductItemSkeleton";
 export { default as ProductListItemSkeleton } from "./Product/ProductListSkeleton";
 export { default as ProductListSkeleton } from "./Product/ProductListSkeleton";
 export { default as QuestionForm } from "./Question/QuestionForm";
