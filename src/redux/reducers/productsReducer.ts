@@ -1,3 +1,4 @@
+import { SEND_QUESTION } from "./../actions/actionsTypes";
 import IAction from "../../interfaces/IAction";
 import IState from "../../interfaces/IEstate";
 import Product from "../../models/Product";
@@ -39,6 +40,11 @@ const productsReducer = (state = INITIAL_STATE, action: IAction): IState => {
       return {
         ...state,
         questions: action.payload.questions,
+      };
+
+    case SEND_QUESTION:
+      return {
+        ...state,
       };
 
     default:
