@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import { fetchQuestions } from "../../redux/actions/productsActions";
 import ImageGallery from "react-image-gallery";
+import IState from "../../interfaces/IEstate";
+import { getTimeFromTimeStamp } from "../../utils/days";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
-import IState from "../../interfaces/IEstate";
 
 const ProductDetail: React.FC = () => {
   const dispatch = useDispatch();
@@ -31,8 +32,12 @@ const ProductDetail: React.FC = () => {
     };
   });
 
+  const orderedQuestions = questions.sort((a, b) => {
+    return new Date(b.sent_at).getTime() - new Date(a.sent_at).getTime();
+  });
+
   return (
-    <Container fluid className="detail-container pt-5">
+    <Container className="detail-container pt-5">
       <h1 className="text-start ms-5">{product.title}</h1>
       <Row>
         <Col md={6} xs={12}>
@@ -47,11 +52,14 @@ const ProductDetail: React.FC = () => {
       </Row>
       <Row className="mt-5">
         <Col>
-          <h1>form queries</h1>
-          {questions.map((question) => (
-            <>
-              <h3>{question.customer_name}</h3>
-            </>
+          <h1>Questions</h1>
+          {orderedQuestions.map((question, index) => (
+            <div key={index} className="question-container">
+              <h6 className="question-customer">{question.customer_name}</h6>
+              <p className="question">{question.question}</p>
+              <p className="answer">{question.answer}</p>
+              <p className="question-date">{getTimeFromTimeStamp(question.sent_at)}</p>
+            </div>
           ))}
         </Col>
       </Row>
