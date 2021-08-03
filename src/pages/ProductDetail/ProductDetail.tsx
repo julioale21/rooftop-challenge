@@ -1,12 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
-import { fetchQuestions } from "../../redux/actions/productsActions";
+import { fetchQuestions, sendQuestion } from "../../redux/actions/productsActions";
 import { QuestionList, QuestionForm } from "../../components";
 import ImageGallery from "react-image-gallery";
 import IState from "../../interfaces/IEstate";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
+import Question from "../../models/Question";
 
 const ProductDetail: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,9 @@ const ProductDetail: React.FC = () => {
   const questions = useSelector((state: IState) => state.questions);
 
   React.useEffect(() => {
-    dispatch(fetchQuestions(product.id));
+    if (Object.keys(product).length) {
+      dispatch(fetchQuestions(product.id));
+    }
   }, [dispatch, product]);
 
   if (!Object.keys(product).length) {
@@ -36,6 +39,13 @@ const ProductDetail: React.FC = () => {
     return new Date(b.sent_at).getTime() - new Date(a.sent_at).getTime();
   });
 
+  const handleSendQuestion = async (question: Question) => {
+    const status = await dispatch(sendQuestion(question));
+
+    // eslint-disable-next-line no-console
+    console.log(status);
+  };
+
   return (
     <Container className="detail-container pt-5">
       <h1 className="text-start ms-5">{product.title}</h1>
@@ -52,7 +62,7 @@ const ProductDetail: React.FC = () => {
       </Row>
 
       <QuestionList questions={orderedQuestions} />
-      <QuestionForm />
+      <QuestionForm onQuestionSent={handleSendQuestion} />
     </Container>
   );
 };

@@ -4,15 +4,26 @@ import { useFormik } from "formik";
 import { schema } from "./validationSchema";
 import { initialValues } from "./initialValues";
 import { FormError } from "../../../components";
+
+import Question from "../../../models/Question";
 import "./styles.css";
 
-const QuestionForm = () => {
+interface Props {
+  onQuestionSent: (question: Question) => void;
+}
+
+const QuestionForm: React.FC<Props> = ({ onQuestionSent }) => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: schema,
     onSubmit: (values) => {
-      // eslint-disable-next-line no-console
-      console.log(values);
+      const question: Question = {
+        customer_name: "julioale21",
+        question: values.message,
+        sent_at: new Date(),
+      };
+
+      onQuestionSent(question);
     },
   });
 
