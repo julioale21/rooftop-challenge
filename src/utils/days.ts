@@ -7,3 +7,12 @@ export const hasExpired = (currentDate: string, expiresDate: string) => {
 
   return difference < 0;
 };
+
+export const getTimeFromTimeStamp = (timestamp: Date) => {
+  const time = new Date(timestamp);
+  const year = time.getFullYear();
+  const month = time.getMonth() + 1;
+  const day = time.getDate();
+
+  return day + "-" + month + "-" + year;
+};
