@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import { fetchQuestions } from "../../redux/actions/productsActions";
+import { QuestionList, QuestionForm } from "../../components";
 import ImageGallery from "react-image-gallery";
 import IState from "../../interfaces/IEstate";
-import { getTimeFromTimeStamp } from "../../utils/days";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
 
@@ -50,19 +50,9 @@ const ProductDetail: React.FC = () => {
           <h5>otra cosa</h5>
         </Col>
       </Row>
-      <Row className="mt-5">
-        <Col>
-          <h1>Questions</h1>
-          {orderedQuestions.map((question, index) => (
-            <div key={index} className="question-container">
-              <h6 className="question-customer">{question.customer_name}</h6>
-              <p className="question">{question.question}</p>
-              <p className="answer">{question.answer}</p>
-              <p className="question-date">{getTimeFromTimeStamp(question.sent_at)}</p>
-            </div>
-          ))}
-        </Col>
-      </Row>
+
+      <QuestionList questions={orderedQuestions} />
+      <QuestionForm />
     </Container>
   );
 };
