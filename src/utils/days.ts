@@ -16,3 +16,16 @@ export const getTimeFromTimeStamp = (timestamp: Date) => {
 
   return day + "-" + month + "-" + year;
 };
+
+export const getRemainingTime = (time: string) => {
+  const endTime = new Date(time).getTime() - new Date().getTime();
+  const minutes = Math.floor((endTime / 1000 / 60) % 60);
+  const hours = Math.floor((endTime / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(endTime / (1000 * 60 * 60 * 24));
+
+  return {
+    minutes,
+    hours,
+    days,
+  };
+};
