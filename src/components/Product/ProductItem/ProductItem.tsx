@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Image } from "react-bootstrap";
 import Product from "../../../models/Product";
 import { getDiscount, parseCurrency } from "../../../utils/currency";
-import { hasExpired } from "../../../utils/days";
+import { hasCurrentOffer } from "../../../utils/product";
 import Discount from "../../Discount";
 import "./styles.css";
 
@@ -11,13 +11,8 @@ interface Props {
   onProductSelected: (product: Product) => void;
 }
 const ProductItem: React.FC<Props> = ({ product, onProductSelected }) => {
-  let isCurrentOffer = false;
-  const today = new Date();
+  const isCurrentOffer = hasCurrentOffer(product);
   const title = product.title.length > 20 ? product.title.substring(0, 20) + "..." : product.title;
-
-  if (product.offer !== null && !hasExpired(today.toString(), product.offer.expires_at)) {
-    isCurrentOffer = true;
-  }
 
   return (
     <Col className="product-container" lg={4} md={6} xl={3} xs={12}>
