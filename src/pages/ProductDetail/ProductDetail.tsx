@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import { fetchQuestions, sendQuestion } from "../../redux/actions/productsActions";
@@ -9,16 +9,28 @@ import IState from "../../interfaces/IEstate";
 import Question from "../../models/Question";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
+import { hasCurrentOffer } from "../../utils/product";
+import { getRemainingTime } from "../../utils/days";
 
 const ProductDetail: React.FC = () => {
   const dispatch = useDispatch();
   const { addToast } = useToasts();
+  const [remainingDays, setRemainingDays] = useState(0);
+  const [remainingHours, setRemainingHours] = useState(0);
+  const [remainingMinutes, setRemainingMinutes] = useState(0);
   const product = useSelector((state: IState) => state.selectedProduct);
   const questions = useSelector((state: IState) => state.questions);
 
   React.useEffect(() => {
     if (Object.keys(product).length) {
       dispatch(fetchQuestions(product.id));
+      if (hasCurrentOffer(product)) {
+        const { days, hours, minutes } = getRemainingTime(product.offer.expires_at);
+
+        setRemainingDays(days);
+        setRemainingHours(hours);
+        setRemainingMinutes(minutes);
+      }
     }
   }, [dispatch, product]);
 
@@ -61,7 +73,16 @@ const ProductDetail: React.FC = () => {
           <div className="d-flex justify-content-around align-items-center">
             <h1 className="fs-4 text-decoration-line-through">$432</h1>
           </div>
-          <h5>otra cosa</h5>
+          <p>
+            Detail: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium similique
+            odio dolorum facilis ipsa necessitatibus commodi, nostrum unde corrupti expedita
+            consectetur. Beatae odio assumenda adipisci a, nobis eveniet voluptatibus iste!
+          </p>
+
+          <p className="m-0">Expira en:</p>
+          <p className="d-inline">{remainingDays !== 0 && remainingDays + " days "}</p>
+          <p className="d-inline">{remainingHours !== 0 && remainingHours + " hours "}</p>
+          <p className="d-inline">{remainingMinutes !== 0 && remainingMinutes + " minutes "}</p>
         </Col>
       </Row>
 
