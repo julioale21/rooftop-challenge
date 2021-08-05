@@ -1,6 +1,8 @@
 import React from "react";
 import { QuestionList, QuestionForm } from "../../components";
 import { Container, Col, Row } from "react-bootstrap";
+import { hasCurrentOffer } from "../../utils/product";
+import { parseCurrency } from "../../utils/currency";
 import useProductDetail from "./useProductDetail";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -16,6 +18,8 @@ const ProductDetail: React.FC = () => {
     remainingHours,
     remainingMinutes,
   } = useProductDetail();
+
+  const isCurrentOffer = hasCurrentOffer(product);
 
   if (!Object.keys(product).length) {
     return (
@@ -35,19 +39,23 @@ const ProductDetail: React.FC = () => {
           <h3 className="text-start mt-5 mt-md-0">{product.title}</h3>
           <hr />
           <div className="d-flex me-2 justify-content-start align-items-center">
-            <p className="fs-4 text-decoration-line-through">$432</p>
-            <p className="fs-1 ms-2">543</p>
+            <p className={`${isCurrentOffer ? "old-price" : "normal-price"} `}>$432</p>
+            {isCurrentOffer && <p className="offer-price">{parseCurrency(product.offer.price)}</p>}
           </div>
-          <p>
-            Detail: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium similique
-            odio dolorum facilis ipsa necessitatibus commodi, nostrum unde corrupti expedita
-            consectetur. Beatae odio assumenda adipisci a, nobis eveniet voluptatibus iste!
+          <p className="description">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium similique odio
+            dolorum facilis ipsa necessitatibus commodi, nostrum unde corrupti expedita consectetur.
+            Beatae odio assumenda adipisci a, nobis eveniet voluptatibus iste!
           </p>
 
-          <p className="m-0">Expira en:</p>
-          <p className="d-inline">{remainingDays !== 0 && remainingDays + " days "}</p>
-          <p className="d-inline">{remainingHours !== 0 && remainingHours + " hours "}</p>
-          <p className="d-inline">{remainingMinutes !== 0 && remainingMinutes + " minutes "}</p>
+          {isCurrentOffer && (
+            <div>
+              <p className="m-0">Expira en:</p>
+              <p className="d-inline">{remainingDays !== 0 && remainingDays + " days "}</p>
+              <p className="d-inline">{remainingHours !== 0 && remainingHours + " hours "}</p>
+              <p className="d-inline">{remainingMinutes !== 0 && remainingMinutes + " minutes "}</p>
+            </div>
+          )}
         </Col>
       </Row>
 
