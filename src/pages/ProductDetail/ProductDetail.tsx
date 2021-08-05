@@ -1,38 +1,21 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Container, Col, Row } from "react-bootstrap";
-import { fetchQuestions, sendQuestion } from "../../redux/actions/productsActions";
+import React from "react";
 import { QuestionList, QuestionForm } from "../../components";
-import { useToasts } from "react-toast-notifications";
+import { Container, Col, Row } from "react-bootstrap";
+import useProductDetail from "./useProductDetail";
 import ImageGallery from "react-image-gallery";
-import IState from "../../interfaces/IEstate";
-import Question from "../../models/Question";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
-import { hasCurrentOffer } from "../../utils/product";
-import { getRemainingTime } from "../../utils/days";
 
 const ProductDetail: React.FC = () => {
-  const dispatch = useDispatch();
-  const { addToast } = useToasts();
-  const [remainingDays, setRemainingDays] = useState(0);
-  const [remainingHours, setRemainingHours] = useState(0);
-  const [remainingMinutes, setRemainingMinutes] = useState(0);
-  const product = useSelector((state: IState) => state.selectedProduct);
-  const questions = useSelector((state: IState) => state.questions);
-
-  React.useEffect(() => {
-    if (Object.keys(product).length) {
-      dispatch(fetchQuestions(product.id));
-      if (hasCurrentOffer(product)) {
-        const { days, hours, minutes } = getRemainingTime(product.offer.expires_at);
-
-        setRemainingDays(days);
-        setRemainingHours(hours);
-        setRemainingMinutes(minutes);
-      }
-    }
-  }, [dispatch, product]);
+  const {
+    handleSendQuestion,
+    images,
+    orderedQuestions,
+    product,
+    remainingDays,
+    remainingHours,
+    remainingMinutes,
+  } = useProductDetail();
 
   if (!Object.keys(product).length) {
     return (
@@ -42,36 +25,18 @@ const ProductDetail: React.FC = () => {
     );
   }
 
-  const images = product.images.map((image) => {
-    return {
-      original: image,
-      thumbnail: image,
-    };
-  });
-
-  const orderedQuestions = questions.sort((a, b) => {
-    return new Date(b.sent_at).getTime() - new Date(a.sent_at).getTime();
-  });
-
-  const handleSendQuestion = async (question: Question) => {
-    try {
-      await dispatch(sendQuestion(question));
-      addToast("Message successfully sent", { appearance: "success" });
-    } catch (error) {
-      addToast("Something was wrong", { appearance: "error" });
-    }
-  };
-
   return (
     <Container className="detail-container pt-5">
-      <h1 className="text-start ms-5">{product.title}</h1>
       <Row>
         <Col md={6} xs={12}>
           <ImageGallery items={images} showNav={false} showPlayButton={false} />
         </Col>
         <Col md={6} xs={12}>
-          <div className="d-flex justify-content-around align-items-center">
-            <h1 className="fs-4 text-decoration-line-through">$432</h1>
+          <h3 className="text-start mt-5 mt-md-0">{product.title}</h3>
+          <hr />
+          <div className="d-flex me-2 justify-content-start align-items-center">
+            <p className="fs-4 text-decoration-line-through">$432</p>
+            <p className="fs-1 ms-2">543</p>
           </div>
           <p>
             Detail: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium similique
