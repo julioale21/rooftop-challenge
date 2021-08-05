@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, FormGroup, FormControl } from "react-bootstrap";
+import { Col, Row, FormGroup } from "react-bootstrap";
 import { useFormik } from "formik";
 import { schema } from "./validationSchema";
 import { initialValues } from "./initialValues";
@@ -29,12 +29,12 @@ const QuestionForm: React.FC<Props> = ({ onQuestionSent }) => {
   });
 
   return (
-    <Row className="mt-5">
+    <Row className="mt-5 w-100">
       <Col className="mx-auto" md={6} xs={12}>
         <form onSubmit={formik.handleSubmit}>
           <FormGroup className="mt-4">
-            <FormControl
-              as="textarea"
+            <textarea
+              className="input-message"
               name="message"
               placeholder="Enter your message"
               value={formik.values.message}
