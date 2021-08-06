@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import HomeView from "./pages/HomeView/HomeView";
 import ProductDetail from "./pages/ProductDetail";
@@ -10,7 +10,7 @@ function App() {
     <Router>
       <AppLayout>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/home">
             <HomeView />
           </Route>
           <Route exact path="/products">
@@ -18,6 +18,9 @@ function App() {
           </Route>
           <Route exact path="/products/:id">
             <ProductDetail />
+          </Route>
+          <Route path="/">
+            <Redirect to="/home" />
           </Route>
         </Switch>
       </AppLayout>
