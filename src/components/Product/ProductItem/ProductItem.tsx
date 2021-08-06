@@ -15,7 +15,7 @@ const ProductItem: React.FC<Props> = ({ product, onProductSelected }) => {
   const title = product.title.length > 20 ? product.title.substring(0, 20) + "..." : product.title;
 
   return (
-    <Col className="product-container" lg={4} md={6} xl={3} xs={12}>
+    <Col className="product-container" data-aos="fade-up" lg={4} md={6} xl={3} xs={12}>
       <div className="product-card" onClick={() => onProductSelected(product)}>
         <Image className="product-card-image" src={product.images[0]} width="100%" />
         <div className="product-card-body">

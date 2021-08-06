@@ -9,7 +9,7 @@ interface Props {
 
 const QuestionItem: React.FC<Props> = ({ question }) => {
   return (
-    <div className="question-container">
+    <div className="question-container" data-aos="fade-up">
       <h6 className="question-customer">{question.customer_name}</h6>
       <p className="question">{question.question}</p>
       <p className="answer">{question.answer}</p>
