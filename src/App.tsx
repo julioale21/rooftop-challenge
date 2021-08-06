@@ -4,8 +4,12 @@ import AppLayout from "./layouts/AppLayout";
 import HomeView from "./pages/HomeView/HomeView";
 import ProductDetail from "./pages/ProductDetail";
 import ProductsView from "./pages/ProductsView";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
+  AOS.init();
+
   return (
     <Router>
       <AppLayout>
