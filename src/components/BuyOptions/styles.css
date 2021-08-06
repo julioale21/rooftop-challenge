@@ -1,0 +1,20 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: transparent;
+  margin-top: 0.5rem;
+}
+
+.button p{
+  margin: 0;
+  margin-left: 0.5rem;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

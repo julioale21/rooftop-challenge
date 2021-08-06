@@ -5,6 +5,7 @@ import { hasCurrentOffer } from "../../utils/product";
 import { parseCurrency } from "../../utils/currency";
 import useProductDetail from "./useProductDetail";
 import ImageGallery from "react-image-gallery";
+import BuyOptions from "../../components/BuyOptions";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
 
@@ -50,6 +51,7 @@ const ProductDetail: React.FC = () => {
               <p className="new-offer-price">{parseCurrency(product.offer.price)}</p>
             )}
           </div>
+
           <p className="description">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium similique odio
             dolorum facilis ipsa necessitatibus commodi, nostrum unde corrupti expedita consectetur.
@@ -63,6 +65,7 @@ const ProductDetail: React.FC = () => {
               minutes={remainingMinutes}
             />
           )}
+          <BuyOptions />
         </Col>
       </Row>
 
