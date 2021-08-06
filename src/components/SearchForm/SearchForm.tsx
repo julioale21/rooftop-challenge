@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, InputGroup, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import "./styles.css";
 
 interface Props {
@@ -7,16 +7,14 @@ interface Props {
 }
 const SearchForm: React.FC<Props> = ({ onInputChange }) => {
   return (
-    <Row className="d-flex justify-content-end mb-5">
-      <Col className="my-1" sm={3}>
-        <InputGroup>
-          <input
-            className="search-input"
-            placeholder="Search here"
-            type="search"
-            onChange={onInputChange}
-          />
-        </InputGroup>
+    <Row className="w-100 d-flex justify-content-end mb-5">
+      <Col className="my-1 d-flex justify-content-end" sm={3}>
+        <input
+          className="search-input"
+          placeholder="Search here"
+          type="search"
+          onChange={onInputChange}
+        />
       </Col>
     </Row>
   );

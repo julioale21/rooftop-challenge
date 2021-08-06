@@ -9,7 +9,7 @@ interface Props {
 
 const QuestionList: React.FC<Props> = ({ questions }) => {
   return (
-    <Row className="mt-5" xs={12}>
+    <Row className="mt-5 px-3 px-md-0" xs={12}>
       <h3 className="my-5 text-start">Questions ({questions.length}):</h3>
       {questions.map((question, index) => (
         <QuestionItem key={index} question={question} />
