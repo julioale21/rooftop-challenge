@@ -13,4 +13,5 @@ export { default as ProductListSkeleton } from "./Product/ProductListSkeleton";
 export { default as QuestionForm } from "./Question/QuestionForm";
 export { default as QuestionItem } from "./Question/QuestionItem";
 export { default as QuestionList } from "./Question/QuestionList";
+export { default as OfferExpiration } from "./OfferExpiration";
 export { default as SearchForm } from "./SearchForm";
