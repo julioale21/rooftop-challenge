@@ -30,13 +30,6 @@ const useProductDetail = () => {
     }
   }, [dispatch, product]);
 
-  const images = product.images.map((image) => {
-    return {
-      original: image,
-      thumbnail: image,
-    };
-  });
-
   const orderedQuestions = questions.sort((a, b) => {
     return new Date(b.sent_at).getTime() - new Date(a.sent_at).getTime();
   });
@@ -52,7 +45,6 @@ const useProductDetail = () => {
 
   return {
     handleSendQuestion,
-    images,
     orderedQuestions,
     product,
     remainingDays,

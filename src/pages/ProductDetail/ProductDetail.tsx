@@ -1,5 +1,5 @@
 import React from "react";
-import { QuestionList, QuestionForm } from "../../components";
+import { QuestionList, QuestionForm, OfferExpiration } from "../../components";
 import { Container, Col, Row } from "react-bootstrap";
 import { hasCurrentOffer } from "../../utils/product";
 import { parseCurrency } from "../../utils/currency";
@@ -11,15 +11,12 @@ import "./styles.css";
 const ProductDetail: React.FC = () => {
   const {
     handleSendQuestion,
-    images,
     orderedQuestions,
     product,
     remainingDays,
     remainingHours,
     remainingMinutes,
   } = useProductDetail();
-
-  const isCurrentOffer = hasCurrentOffer(product);
 
   if (!Object.keys(product).length) {
     return (
@@ -28,6 +25,15 @@ const ProductDetail: React.FC = () => {
       </div>
     );
   }
+
+  const images = product.images.map((image) => {
+    return {
+      original: image,
+      thumbnail: image,
+    };
+  });
+
+  const isCurrentOffer = hasCurrentOffer(product);
 
   return (
     <Container className="detail-container pt-5">
@@ -40,7 +46,9 @@ const ProductDetail: React.FC = () => {
           <hr />
           <div className="d-flex me-2 justify-content-start align-items-center">
             <p className={`${isCurrentOffer ? "old-price" : "normal-price"} `}>$432</p>
-            {isCurrentOffer && <p className="offer-price">{parseCurrency(product.offer.price)}</p>}
+            {isCurrentOffer && (
+              <p className="new-offer-price">{parseCurrency(product.offer.price)}</p>
+            )}
           </div>
           <p className="description">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium similique odio
@@ -49,12 +57,11 @@ const ProductDetail: React.FC = () => {
           </p>
 
           {isCurrentOffer && (
-            <div>
-              <p className="m-0">Expira en:</p>
-              <p className="d-inline">{remainingDays !== 0 && remainingDays + " days "}</p>
-              <p className="d-inline">{remainingHours !== 0 && remainingHours + " hours "}</p>
-              <p className="d-inline">{remainingMinutes !== 0 && remainingMinutes + " minutes "}</p>
-            </div>
+            <OfferExpiration
+              days={remainingDays}
+              hours={remainingHours}
+              minutes={remainingMinutes}
+            />
           )}
         </Col>
       </Row>
