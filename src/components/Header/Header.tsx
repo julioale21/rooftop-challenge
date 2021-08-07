@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   return (
     <Navbar expand="md" id="header" variant="dark">
       <Image className="ms-5" src={logo} width="80px" onClick={handleClick} />
-      <p className="m-0 fw-bold ms-md-4">Rooftop Academy</p>
+      <p className="m-0 fw-bold text-white ms-md-4">Rooftop Academy</p>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav navbarScroll className="nav">
