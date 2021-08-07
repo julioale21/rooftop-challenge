@@ -22,7 +22,7 @@ A MVP is enough for now, so we'll start with some basic things that are essentia
 
 He asks us that the site contain at least 3 pages
 
-- home
+- Home
 - Catalogue
 - Product detail
 
@@ -97,6 +97,55 @@ Below we detail what should go on each page, appearing in the order in which it 
 
 
 ## Demo
+[https://rooftop-challenge.vercel.app/home](https://rooftop-challenge.vercel.app/home)
+
+## Desktop Design
+
+<div>
+  <img src="./docs/home-desktop.png">
+</div>
+
+<br>
+<br>
+
+<div>
+  <img src="./docs/products-desktop.png">
+</div>
+
+<br>
+<br>
+
+<div>
+  <img src="./docs/detail-desktop.png">
+</div>
+
+
+## Mobile Design
+
+<div>
+  <img src="./docs/home-mobile.png">
+</div>
+
+<br>
+<br>
+
+<div>
+  <img src="./docs/products-mobile.png">
+</div>
+
+<br>
+<br>
+
+<div>
+  <img src="./docs/detail-mobile-1.png">
+</div>
+
+<br>
+<br>
+
+<div>
+  <img src="./docs/detail-mobile-2.png">
+</div>
 
 
 ## Project
