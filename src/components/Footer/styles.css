@@ -1,3 +1,13 @@
+.author {
+  font-size: 0.7rem;
+}
+
+.author a {
+  color: white;
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+
 #footer {
   display: flex;
   justify-content: center;

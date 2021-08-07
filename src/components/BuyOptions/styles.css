@@ -8,6 +8,13 @@
   margin-top: 0.5rem;
 }
 
+.button:hover {
+  background-color: #51C4D3;
+  transform: translateY(2px);
+  transition: all 0.5s;
+  color: white;
+}
+
 .button p{
   margin: 0;
   margin-left: 0.5rem;

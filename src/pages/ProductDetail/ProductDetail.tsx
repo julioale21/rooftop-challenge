@@ -43,7 +43,7 @@ const ProductDetail: React.FC = () => {
           <ImageGallery items={images} showNav={false} showPlayButton={false} />
         </Col>
         <Col md={6} xs={12}>
-          <h3 className="text-start mt-5 mt-md-0">{product.title}</h3>
+          <h3 className="detail-title text-start mt-5 mt-md-0">{product.title}</h3>
           <hr />
           <div className="d-flex me-2 justify-content-start align-items-center">
             <p className={`${isCurrentOffer ? "old-price" : "normal-price"} `}>$432</p>

@@ -4,7 +4,7 @@
 
 .remaining-item {
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
 }
 
 .remaining-item span {
@@ -16,11 +16,11 @@
 .remaining-items-container {
   display: flex;
    justify-content: center;
-   gap: 1rem;
+   gap: 1.3rem;
 }
 
 .remainig-offer-text {
   color: red;
   font-weight: bold;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 }

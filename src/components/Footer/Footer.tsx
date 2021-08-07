@@ -8,6 +8,9 @@ const Footer: React.FC = () => {
   return (
     <Row id="footer">
       <p>@ {today.getFullYear()} copyright: Rooftop Academy</p>
+      <p className="author">
+        Solved by <a href="https://github.com/julioale21">@julioRomero</a>
+      </p>
     </Row>
   );
 };

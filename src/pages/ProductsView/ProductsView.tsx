@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { Pagination, ProductList, ProductListItemSkeleton, SearchForm } from "../../components";
 import { fetchProducts, setSelectedProduct } from "../../redux/actions/productsActions";
-import { Container } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import usePagination from "../../components/Pagination/usePagination";
 import IState from "../../interfaces/IEstate";
 import Product from "../../models/Product";
+import img from "../../assets/banner_1.jpg";
 
 const ProductsView: React.FC = () => {
   const dispatch = useDispatch();
@@ -31,27 +32,30 @@ const ProductsView: React.FC = () => {
   };
 
   return (
-    <Container fluid className="mt-5">
-      <Container className="pe-5">
-        <SearchForm onInputChange={handleChange} />
+    <>
+      <Image height="350px" src={img} width="100%" />
+      <Container fluid className="mt-5">
+        <Container className="pe-5">
+          <SearchForm onInputChange={handleChange} />
+        </Container>
+        {!isLoading ? (
+          <>
+            <ProductList
+              products={paginatedProducts}
+              onProductSelected={(product) => handleSelectedProduct(product)}
+            />
+            <Pagination
+              handleNext={setNextPage}
+              handlePrev={setPrevPage}
+              page={currentPage}
+              pageCount={pageCount}
+            />
+          </>
+        ) : (
+          <ProductListItemSkeleton quantity={10} />
+        )}
       </Container>
-      {!isLoading ? (
-        <>
-          <ProductList
-            products={paginatedProducts}
-            onProductSelected={(product) => handleSelectedProduct(product)}
-          />
-          <Pagination
-            handleNext={setNextPage}
-            handlePrev={setPrevPage}
-            page={currentPage}
-            pageCount={pageCount}
-          />
-        </>
-      ) : (
-        <ProductListItemSkeleton quantity={10} />
-      )}
-    </Container>
+    </>
   );
 };
 

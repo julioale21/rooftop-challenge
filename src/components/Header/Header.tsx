@@ -12,13 +12,14 @@ const Header: React.FC = () => {
   };
 
   return (
-    <Navbar expand="md" id="header" variant="light">
-      <Image className="ms-5" src={logo} width="100px" onClick={handleClick} />
+    <Navbar expand="md" id="header" variant="dark">
+      <Image className="ms-5" src={logo} width="80px" onClick={handleClick} />
+      <p className="m-0 fw-bold ms-md-4">Rooftop Academy</p>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav navbarScroll className="nav">
-          <LinkItem classes="fs-6  fw-bold text-uppercase" linkTo="/" text="Home" />
-          <LinkItem classes="fs-6 fw-bold text-uppercase" linkTo="/products" text="Products" />
+          <LinkItem classes="fs-5 fw-bolder " linkTo="/" text="Home" />
+          <LinkItem classes="fs-5 fw-bold" linkTo="/products" text="Products" />
         </Nav>
       </Navbar.Collapse>
     </Navbar>
