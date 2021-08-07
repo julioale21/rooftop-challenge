@@ -1,0 +1,49 @@
+.item-name, .offer-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+}
+.offer-title {
+  margin-bottom: 0.5rem;
+}
+
+.item-value {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bolder;
+}
+
+.remaining-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.remaining-item-box {
+  border: 1px solid gray;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px gray;
+  background-color: #1687A7;
+}
+
+.remaining-items-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remaining-offer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(22, 135, 167, 0.4);
+  padding: 0.5rem 0;
+  border-radius: 10px;
+}
