@@ -3,7 +3,7 @@ import { Col, Image } from "react-bootstrap";
 import Product from "../../../models/Product";
 import { getDiscount, parseCurrency } from "../../../utils/currency";
 import { hasCurrentOffer } from "../../../utils/product";
-import Discount from "../../Discount";
+import DiscountCard from "../../DiscountCard";
 import "./styles.css";
 
 interface Props {
@@ -32,7 +32,7 @@ const ProductItem: React.FC<Props> = ({ product, onProductSelected }) => {
               </p>
             </div>
             {isCurrentOffer && (
-              <Discount off={getDiscount(Number(product.price), product.offer.price)} />
+              <DiscountCard off={getDiscount(Number(product.price), product.offer.price)} />
             )}
             {isCurrentOffer ? (
               <p className="offer-price">{parseCurrency(product.offer.price)}</p>

@@ -1,11 +1,10 @@
 import React from "react";
-import { QuestionList, QuestionForm, OfferExpiration } from "../../components";
+import { BuyOptionsPanel, OfferExpiration, QuestionForm, QuestionList } from "../../components";
 import { Container, Col, Row } from "react-bootstrap";
 import { hasCurrentOffer } from "../../utils/product";
-import { parseCurrency } from "../../utils/currency";
+import { getDiscount, parseCurrency } from "../../utils/currency";
 import useProductDetail from "./useProductDetail";
 import ImageGallery from "react-image-gallery";
-import BuyOptions from "../../components/BuyOptions";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./styles.css";
 
@@ -40,33 +39,44 @@ const ProductDetail: React.FC = () => {
     <Container className="detail-container pt-5">
       <Row>
         <Col md={6} xs={12}>
-          <ImageGallery items={images} showNav={false} showPlayButton={false} />
+          <ImageGallery items={images} showPlayButton={false} />
+          {isCurrentOffer && (
+            <div className="offer-card">
+              <p className="m-0">{getDiscount(Number(product.price), product.offer.price)}% OFF</p>
+            </div>
+          )}
         </Col>
         <Col md={6} xs={12}>
           <h3 className="detail-title text-start mt-5 mt-md-0">{product.title}</h3>
           <hr />
-          <div className="d-flex me-2 justify-content-start align-items-center">
-            <p className={`${isCurrentOffer ? "old-price" : "normal-price"} `}>$432</p>
+          <div className="d-flex flex-column flex-lg-row me-2 justify-content-center align-items-center">
+            <div className="d-flex align-items-center">
+              <p
+                className={`${isCurrentOffer ? "old-price" : "normal-price"} align-self-end mb-4 `}
+              >
+                {product.price}
+              </p>
+              {isCurrentOffer && (
+                <p className="new-offer-price">{parseCurrency(product.offer.price)}</p>
+              )}
+            </div>
             {isCurrentOffer && (
-              <p className="new-offer-price">{parseCurrency(product.offer.price)}</p>
+              <div className="w-100 d-flex justify-content-center justify-content-lg-end mb-5 mb-lg-3 me-lg-3">
+                <OfferExpiration
+                  days={remainingDays}
+                  hours={remainingHours}
+                  minutes={remainingMinutes}
+                />
+              </div>
             )}
           </div>
-
-          {isCurrentOffer && (
-            <OfferExpiration
-              days={remainingDays}
-              hours={remainingHours}
-              minutes={remainingMinutes}
-            />
-          )}
-
           <p className="description">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium similique odio
             dolorum facilis ipsa necessitatibus commodi, nostrum unde corrupti expedita consectetur.
             Beatae odio assumenda adipisci a, nobis eveniet voluptatibus iste!
           </p>
 
-          <BuyOptions />
+          <BuyOptionsPanel />
         </Col>
       </Row>
 
