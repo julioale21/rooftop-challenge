@@ -8,6 +8,7 @@ import usePagination from "../../components/Pagination/usePagination";
 import IState from "../../interfaces/IEstate";
 import Product from "../../models/Product";
 import img from "../../assets/banner_1.jpg";
+import "./styles.css";
 
 const ProductsView: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const ProductsView: React.FC = () => {
 
   return (
     <>
-      <Image height="350px" src={img} width="100%" />
+      <Image className="banner" src={img} width="100%" />
       <Container fluid className="mt-5">
         <Container className="pe-5">
           <SearchForm onInputChange={handleChange} />
