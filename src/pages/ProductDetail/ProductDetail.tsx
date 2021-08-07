@@ -52,12 +52,6 @@ const ProductDetail: React.FC = () => {
             )}
           </div>
 
-          <p className="description">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium similique odio
-            dolorum facilis ipsa necessitatibus commodi, nostrum unde corrupti expedita consectetur.
-            Beatae odio assumenda adipisci a, nobis eveniet voluptatibus iste!
-          </p>
-
           {isCurrentOffer && (
             <OfferExpiration
               days={remainingDays}
@@ -65,6 +59,13 @@ const ProductDetail: React.FC = () => {
               minutes={remainingMinutes}
             />
           )}
+
+          <p className="description">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium similique odio
+            dolorum facilis ipsa necessitatibus commodi, nostrum unde corrupti expedita consectetur.
+            Beatae odio assumenda adipisci a, nobis eveniet voluptatibus iste!
+          </p>
+
           <BuyOptions />
         </Col>
       </Row>
