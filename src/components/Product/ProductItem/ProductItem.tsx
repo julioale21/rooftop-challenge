@@ -26,7 +26,7 @@ const ProductItem: React.FC<Props> = ({ product, onProductSelected }) => {
                 isCurrentOffer ? "justify-content-start" : "justify-content-end"
               }`}
             >
-              {isCurrentOffer && <p className="offer-text my-0">Antes </p>}
+              {isCurrentOffer && <p className="offer-text my-0">Before </p>}
               <p className={`m-0 ${isCurrentOffer ? "offer" : "price"}`}>
                 {parseCurrency(Number(product.price))}
               </p>
